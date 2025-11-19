@@ -1,0 +1,77 @@
+USE OnlineRetailApplication;
+
+-- 1️⃣ Select all columns from customers
+SELECT * 
+FROM customers;
+
+-- 1️⃣ Select all columns from categories
+SELECT *
+FROM categories;
+
+-- 1️⃣ Select all columns from order_items
+SELECT *
+FROM order_items;
+
+-- 1️⃣ Select all columns from orders
+SELECT * 
+FROM orders;
+
+-- 1️⃣ Select all columns from payments
+SELECT *
+FROM payments;
+
+-- 1️⃣ Select all columns from products
+SELECT * 
+FROM products;
+
+-- 1️⃣ Select all columns from reviews
+SELECT *
+FROM reviews;
+
+-- 2️⃣ Select specific columns from customers
+SELECT first_name, last_name, email, city
+FROM customers;
+
+-- 3️⃣ Select customers from a specific city
+SELECT first_name, last_name, city
+FROM customers
+WHERE city = 'Mumbai';
+
+-- 4️⃣ Select customers from Mumbai or Delhi
+SELECT first_name, last_name, city
+FROM customers
+WHERE city = 'Mumbai' OR city = 'Delhi';
+
+-- 5️⃣ Select customers whose name starts with 'J'
+SELECT first_name, last_name
+FROM customers
+WHERE first_name LIKE 'J%';
+
+-- 6️⃣ Select orders with total_amount between 50 and 200
+SELECT order_id, customer_id, total_amount
+FROM orders
+WHERE total_amount BETWEEN 50 AND 200;
+
+-- 7️⃣ Select products in stock (>0) and price greater than 100
+SELECT product_name, price, stock_quantity
+FROM products
+WHERE stock_quantity > 0 AND price > 100;
+
+-- 8️⃣ Sort customers by registration date (newest first)
+SELECT first_name, last_name, registration_date
+FROM customers
+ORDER BY registration_date DESC;
+
+-- 9️⃣ Sort products by price (ascending) and limit to top 5 cheapest products
+SELECT product_name, price
+FROM products
+ORDER BY price ASC
+LIMIT 5;
+
+-- 🔟 Combine WHERE, ORDER BY, and LIMIT
+-- Get top 5 most expensive electronics
+SELECT product_name, price
+FROM products
+WHERE category_id = 1
+ORDER BY price DESC
+LIMIT 5;
